@@ -2,7 +2,7 @@
 a hacking and security framework
 
 &nbsp;
-![](resources/feagle-logo.jpg)
+![](resources/feagle-logo.jpg =250x250)
 
 &nbsp;
 ### What is Fat Eagle ?
