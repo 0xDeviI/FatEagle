@@ -1,0 +1,26 @@
+[
+    {
+        "MODULE_FNAME": "fescripts/Cryptography/Hash/Hash6",
+        "MODULE_INFO": "a FeScript to bruteforce Hashes"
+    },
+    {
+        "MODULE_FNAME": "fescripts/Osint/WhoIsWho",
+        "MODULE_INFO": "a multi threaded FeScript to find accounts of a username in websites"
+    },
+    {
+        "MODULE_FNAME": "fescripts/Web/DataMining/RobotSitemapFinder",
+        "MODULE_INFO": "a FeScript to find websites robots.txt or sitemap.xml"
+    },
+    {
+        "MODULE_FNAME": "fescripts/Web/Indexing/RetroDirScanner",
+        "MODULE_INFO": "a FeScript to scan web direcotry."
+    },
+    {
+        "MODULE_FNAME": "fescripts/Web/PortScan/Duzz_Port_Scanner",
+        "MODULE_INFO": "a port scanner FeScript"
+    },
+    {
+        "MODULE_FNAME": "fescripts/Web/Subdomains/MainDoSub",
+        "MODULE_INFO": "a FeScript to scan subdomains of a host."
+    }
+]
