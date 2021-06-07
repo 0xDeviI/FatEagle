@@ -56,7 +56,7 @@ mainly commmands are:
 ### Configuration
 You can easily config framework using file 'feConfig.py'. for example you can disable modules database update status in startup by this setting:
 ```python
-MODULE_DB_UPDATE_ON_START = True
+MODULE_DB_UPDATE_ON_START = False
 ```
 
 ### LICENSE
