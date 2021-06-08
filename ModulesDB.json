@@ -1,5 +1,13 @@
 [
     {
+        "MODULE_FNAME": "fescripts/bruteforce/RalaCrack",
+        "MODULE_INFO": "breakdown rar files using bruteforce (crack rar files pass)"
+    },
+    {
+        "MODULE_FNAME": "fescripts/bruteforce/ZilaCrack",
+        "MODULE_INFO": "breakdown zip files using bruteforce (crack zip files pass)"
+    },
+    {
         "MODULE_FNAME": "fescripts/Cryptography/Hash/Hash6",
         "MODULE_INFO": "a FeScript to bruteforce Hashes"
     },

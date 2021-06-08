@@ -16,6 +16,9 @@ def clearConsole():
 def main():
     ans = input("enter FeScript group Path: ")
     gpath = ans
+    if (gpath[0:4] == "libs" or gpath[0:4] == "temp"):
+        print(Fore.RED + "can't use reserved directories like libs,temp or e.t.c..")
+        exit()
     if (os.path.exists("fescripts/" + ans) == False):   os.makedirs("fescripts/" + ans)
     _FeScript = {}
     ans = input("enter FeScript name: ")
@@ -47,6 +50,7 @@ def main():
     for i in _arr:
         i = i.replace("\n", "")
         x += i + "\n"
+    _FILE.close()
     x = x.replace("FESC_NAME", _FeScript["name"])
     x = x.replace("{{FESCRIPT_NAME}}", _FeScript["name"])
     x = x.replace("{{MINI_INFO}}", _FeScript["mini_info"])

@@ -6,14 +6,18 @@ import commandParser as _command_parser
 import fescriptManager
 import socket as s
 import json
+import shutil
+import time
 from colorama import init
 init()
 from colorama import Fore,Back
 from processManager import _process_mode,FE_PROCESS_MANAGER
 from fescripts.libs.PFable import fable_mode,fable
+from colorManager import *
 from feConfig import *
 
 _HEADER = header.FE_HEADER()
+_COLOR_M = FE_COLOR()
 _cp = _command_parser.FE_COMMAND_PARSE()
 _fsc = fescriptManager.FE_SCRIPT_MANAGER()
 _proc = FE_PROCESS_MANAGER()
@@ -159,6 +163,8 @@ def main():
             else:
                 print(Fore.LIGHTRED_EX + "list '" + Fore.LIGHTBLUE_EX + _list_name + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
             del __all_vars
+        elif (command.casefold() == "deltemp".casefold()):
+            clearModuleTemp(True)
         elif (command.casefold() == "info __FE_MULTI_FESCRIPT__".casefold()):
             for i in __FE_MULTI_FESCRIPT__:
                 print(i + " : ")
@@ -180,6 +186,13 @@ def main():
             _fes_name = arged[3]
             _fsc.loadScript(_fes_name)
             setValue("set " + _s_name + " " + _s_val)
+        elif (command.casefold() == "version".casefold()):
+            print(_COLOR_M.colorful_str("Fat Eagle V" + VERSION_))
+        elif (command.casefold() == "fwi".casefold()):
+            print("Fat Eagle is a hacking and cybersecurity framework written in python by " + DEVELOPER + """ 
+you can easily run it everywhere like windows,linux,mac,android and everywehere python can run. with this framework you can access to top
+security tools like exploits,payloads,hash crackers,phishing tools and
+e.t.c . as main scripts , it uses customized python script called 'FeScript' that means 'Fat Eagle Script'.""")
         else:
             print(Fore.LIGHTCYAN_EX + command + Fore.LIGHTRED_EX + " is not a valid command." + Fore.RESET)
 
@@ -221,7 +234,7 @@ def getListOfFiles(dirName):
             allFiles = allFiles + getListOfFiles(fullPath)
         else:
             path = fullPath.replace("\\","/")
-            if (path[len(path) - 3:len(path)] == ".py" and "libs" not in path):
+            if (path[len(path) - 3:len(path)] == ".py" and "libs" not in path and "temp" not in path):
                 allFiles.append(path[0:len(path) - 3])
                 
     return allFiles
@@ -240,15 +253,29 @@ def updateModulesDB(userRequest = False):
     _file.close()
     if (userRequest):   print(Fore.GREEN + "Modules Database Updated!" + Fore.RESET)
 
+def clearModuleTemp(userRequest = False):
+    folder = 'fescripts/temp/'
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(Fore.RED + ('Failed to delete %s. Reason: %s' % (file_path, e)) + Fore.RESET)
+        if (userRequest):   print(Fore.GREEN + "Modules Temp Cleared!" + Fore.RESET)
+
 if (__name__ == "__main__"):
-    # msg = 'Loading Fat Eagle ...'
+    msg = 'Loading Fat Eagle ...'
     clearConsole()
-    # sys.stdout.write(msg)
-    # sys.stdout.flush()
-    # time.sleep(2)
-    # for _ in range(len(msg)):
-    #     time.sleep(0.1)
-    #     sys.stdout.write('\033[D \033[D')
-    #     sys.stdout.flush()
+    sys.stdout.write(msg)
+    sys.stdout.flush()
+    time.sleep(2)
+    for _ in range(len(msg)):
+        time.sleep(0.1)
+        sys.stdout.write('\033[D \033[D')
+        sys.stdout.flush()
     if (MODULE_DB_UPDATE_ON_START): updateModulesDB()
+    if (CLEAR_MODULE_TEMPS_ON_START):   clearModuleTemp()
     main()

@@ -51,6 +51,9 @@ mainly commmands are:
 - info:               show info modules in  custom list
 - start:              start custom list
 - mset:               set value to custom module in custom list
+- deltemp:            delete module's temp files
+- version:            show framework version
+- fwi:                show info of framework
 
 &nbsp;
 ### Configuration

@@ -1,3 +1,4 @@
+from os import fstat
 import random
 from colorama import init
 init()
@@ -6,6 +7,11 @@ from colorama import Fore,Back
 class FE_COLOR:
     def resetColor(self):
         return Fore.RESET
+    def colorful_str(self,_str):
+        fstr = ""
+        for i in _str:
+            fstr += self.colorize_str(i)
+        return fstr
     def colorize_str(self,_str):
         _ = random.randint(0,11)
         if (_ == 0):
