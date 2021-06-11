@@ -5,7 +5,7 @@ a hacking and security framework
 <center><img src="resources/fwui.png"></center>
 
 &nbsp;
-### What is Fat Eagle ?
+### Description
 *Fat Eagle* is a hacking and cybersecurity framework written in python.
 you can easily run it everywhere like windows,linux,mac,android and everywehere python can run. with this framework you can access to top
 security tools like exploits,payloads,hash crackers,phishing tools and
@@ -31,8 +31,8 @@ python3 fEagle.py
 ### Mainly Commands
 framework uses some mainly command that all fescripts designed by that.
 mainly commmands are:
-- search:             search module
-- load fescript:      load module
+- search [FeScript]:             search module
+- load fescript [FeScript]:      load module
 - unload fescript:    unload module
 - fesOptions:         show all available switch in module
 - fesRequire:         show all required switch in module
@@ -42,15 +42,15 @@ mainly commmands are:
 - myHost:             show user host name
 - clear/cls:          clear screen(different in windows and others)
 - banner:             show random banner
-- set:                set a value for a module switch
+- set [Property] [Value]:                set a value for a module switch
 - fesStart:           start a fescript
 - update db:          update module database(require if new module added)
 - exit:               exit framework
-- add:                add a module to custom lists
-- show list:          show custom list
-- info:               show info modules in  custom list
+- add [FeScript] [ListName]:                add a module to custom lists
+- show list [ListName]:          show custom list
+- info [ListName]:               show info modules in  custom list
 - start:              start custom list
-- mset:               set value to custom module in custom list
+- mset [Property] [Value] [FeScript]:               set value to custom module in custom list
 - deltemp:            delete module's temp files
 - version:            show framework version
 - fwi:                show info of framework
