@@ -95,13 +95,13 @@ def main():
         elif (_cp.IsSet(command) != False):
             setValue(command)
         elif (command.casefold() == "fesStart".casefold()):
-            # try:
+            try:
                 _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." + _fsc.loaded_script.replace("/","."),fromlist=['object'])
                 _proc.setPM(_process_mode.IN_SCRIPT)
                 eval("_main_module." + pathilize(_fsc.loaded_script) + "()._pre_start()")
                 _proc.setPM(_process_mode.FREE)
-            # except:
-            #     print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+            except:
+                print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
         elif (_cp.IsSearch(command) != False):
             _search = _cp.IsSearch(command)
             if (_search == "*"):  _search = "s"
@@ -267,15 +267,15 @@ def clearModuleTemp(userRequest = False):
         if (userRequest):   print(Fore.GREEN + "Modules Temp Cleared!" + Fore.RESET)
 
 if (__name__ == "__main__"):
-    msg = 'Loading Fat Eagle ...'
+    # msg = 'Loading Fat Eagle ...'
     clearConsole()
-    sys.stdout.write(msg)
-    sys.stdout.flush()
-    time.sleep(2)
-    for _ in range(len(msg)):
-        time.sleep(0.1)
-        sys.stdout.write('\033[D \033[D')
-        sys.stdout.flush()
+    # sys.stdout.write(msg)
+    # sys.stdout.flush()
+    # time.sleep(2)
+    # for _ in range(len(msg)):
+    #     time.sleep(0.1)
+    #     sys.stdout.write('\033[D \033[D')
+    #     sys.stdout.flush()
     if (MODULE_DB_UPDATE_ON_START): updateModulesDB()
     if (CLEAR_MODULE_TEMPS_ON_START):   clearModuleTemp()
     main()

@@ -16,6 +16,10 @@
         "MODULE_INFO": "a multi threaded FeScript to find accounts of a username in websites"
     },
     {
+        "MODULE_FNAME": "fescripts/Web/Attack/Phishing/InstaFox",
+        "MODULE_INFO": "a FeScript to phishing attack to instagram pages."
+    },
+    {
         "MODULE_FNAME": "fescripts/Web/DataMining/RobotSitemapFinder",
         "MODULE_INFO": "a FeScript to find websites robots.txt or sitemap.xml"
     },
