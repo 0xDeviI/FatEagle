@@ -1,5 +1,5 @@
 # Fat Eagle
-a hacking and security framework
+a hacking and cybersecurity framework
 
 &nbsp;
 <center><img src="resources/fwui.png"></center>
