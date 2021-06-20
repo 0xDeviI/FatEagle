@@ -94,6 +94,8 @@ def main():
                     print(Fore.LIGHTRED_EX + "no feScript loaded." + Fore.RESET)
         elif (_cp.IsSet(command) != False):
             setValue(command)
+        elif (_cp.IsShow(command) != False):
+            showValue(_cp.IsShow(command))
         elif (command.casefold() == "fesStart".casefold()):
             try:
                 _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." + _fsc.loaded_script.replace("/","."),fromlist=['object'])
@@ -196,6 +198,25 @@ e.t.c . as main scripts , it uses customized python script called 'FeScript' tha
         else:
             print(Fore.LIGHTCYAN_EX + command + Fore.LIGHTRED_EX + " is not a valid command." + Fore.RESET)
 
+def showValue(switch):
+    if (_fsc.loaded_script != ""):
+        found = False
+
+        _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." +  _fsc.loaded_script.replace("/","."),fromlist=['object'])
+        props = eval("_main_module." + pathilize(_fsc.loaded_script) + "().allSwitches()")
+        del _main_module
+        for i in props:
+            if (switch in i):
+                _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." +  _fsc.loaded_script.replace("/","."),fromlist=['object'])
+                eval("_main_module." + pathilize(_fsc.loaded_script) + "().showSwitch(\"" + switch + "\")")
+                found = True
+                del _main_module
+                break
+        if (found == False):
+            print(Fore.LIGHTRED_EX + "switch " + Fore.LIGHTBLUE_EX + switch + Fore.LIGHTRED_EX + " does not exist!" + Fore.RESET)
+    else:
+        print(Fore.LIGHTRED_EX + "no feScript loaded." + Fore.RESET)
+
 def setValue(command):
     if (_fsc.loaded_script != ""):
         other = command[4:len(command)].split()
@@ -203,15 +224,16 @@ def setValue(command):
 
         _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." +  _fsc.loaded_script.replace("/","."),fromlist=['object'])
         props = eval("_main_module." + pathilize(_fsc.loaded_script) + "().allSwitches()")
+        del _main_module
         for i in props:
             if (other[0] == i):
+                _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." +  _fsc.loaded_script.replace("/","."),fromlist=['object'])
+                eval("_main_module." + pathilize(_fsc.loaded_script) + "().setSwitch(\"" + other[0] + "\",\"" + other[1] + "\")")
+                print(Fore.LIGHTBLUE_EX + other[0] + Fore.RESET + " ---> " + Fore.LIGHTGREEN_EX + other[1] + Fore.RESET)
                 found = True
+                del _main_module
                 break
-        if (found):
-            _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." +  _fsc.loaded_script.replace("/","."),fromlist=['object'])
-            eval("_main_module." + pathilize(_fsc.loaded_script) + "().setSwitch(\"" + other[0] + "\",\"" + other[1] + "\")")
-            print(Fore.LIGHTBLUE_EX + other[0] + Fore.RESET + " ---> " + Fore.LIGHTGREEN_EX + other[1] + Fore.RESET)
-        else:
+        if (found == False):
             print(Fore.LIGHTRED_EX + "switch " + Fore.LIGHTBLUE_EX + other[0] + Fore.LIGHTRED_EX + " does not exist!" + Fore.RESET)
     else:
         print(Fore.LIGHTRED_EX + "no feScript loaded." + Fore.RESET)

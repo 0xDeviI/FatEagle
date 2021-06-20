@@ -58,6 +58,10 @@ class Duzz_Port_Scanner:
       else:
         self._start()
 
+    def showSwitch(self,sw):
+      print(self._fs._Opt[sw]["Body"])
+
+
     def TCP_connect(self,ip, port_number, delay, output):
       TCPsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       TCPsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

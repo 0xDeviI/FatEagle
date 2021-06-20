@@ -55,6 +55,10 @@ class WhoIsWho:
       else:
         self._start()
 
+    def showSwitch(self,sw):
+      print(self._fs._Opt[sw]["Body"])
+
+
     def checkUser(self,_url,output):
       nonExistWords = ['Sorry','Not','Couldn\'t','Can\'t','Miss','Missed','404']
       try:

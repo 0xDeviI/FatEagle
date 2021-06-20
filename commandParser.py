@@ -9,6 +9,11 @@ class FE_COMMAND_PARSE:
             return True
         else:
             return False
+    def IsShow(self,comm):
+        d = comm.split()
+        if (len(d) == 2 and d[0].casefold() == "show".casefold()):
+            return d[1]
+        return False
     def IsSearch(self,comm):
         if (comm[0:7].casefold() == "search ".casefold()):
             return comm[7:len(comm)]

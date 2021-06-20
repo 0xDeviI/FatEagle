@@ -54,6 +54,7 @@ mainly commmands are:
 - deltemp:            delete module's temp files
 - version:            show framework version
 - fwi:                show info of framework
+- show [switch]:       show value of a switch
 
 &nbsp;
 ### Configuration

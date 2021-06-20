@@ -54,6 +54,10 @@ class RetroDirScanner:
       else:
         self._start()
 
+    def showSwitch(self,sw):
+      print(self._fs._Opt[sw]["Body"])
+
+
     def parsePage(self,url):
         req = requests.get(url)
         if (int(req.status_code / 100) == 2):

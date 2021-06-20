@@ -61,6 +61,10 @@ class Hash6:
       else:
         self._start()
 
+    def showSwitch(self,sw):
+      print(self._fs._Opt[sw]["Body"])
+
+
     def _start(self):
       print("\nFatEagle Script ' " + Fore.YELLOW + self.__class__.__name__ + Fore.RESET + " '" + Fore.GREEN + " Started!" + Fore.RESET)
       # --------------------------------------------> Script Started!
