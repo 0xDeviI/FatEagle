@@ -289,15 +289,15 @@ def clearModuleTemp(userRequest = False):
         if (userRequest):   print(Fore.GREEN + "Modules Temp Cleared!" + Fore.RESET)
 
 if (__name__ == "__main__"):
-    # msg = 'Loading Fat Eagle ...'
+    msg = 'Loading Fat Eagle ...'
     clearConsole()
-    # sys.stdout.write(msg)
-    # sys.stdout.flush()
-    # time.sleep(2)
-    # for _ in range(len(msg)):
-    #     time.sleep(0.1)
-    #     sys.stdout.write('\033[D \033[D')
-    #     sys.stdout.flush()
+    sys.stdout.write(msg)
+    sys.stdout.flush()
+    time.sleep(2)
+    for _ in range(len(msg)):
+        time.sleep(0.1)
+        sys.stdout.write('\033[D \033[D')
+        sys.stdout.flush()
     if (MODULE_DB_UPDATE_ON_START): updateModulesDB()
     if (CLEAR_MODULE_TEMPS_ON_START):   clearModuleTemp()
     main()
