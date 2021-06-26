@@ -97,13 +97,13 @@ def main():
         elif (_cp.IsShow(command) != False):
             showValue(_cp.IsShow(command))
         elif (command.casefold() == "fesStart".casefold()):
-            #try:
+            try:
                 _main_module = locals()[_fsc.loaded_script] = __import__("fescripts." + _fsc.loaded_script.replace("/","."),fromlist=['object'])
                 _proc.setPM(_process_mode.IN_SCRIPT)
                 eval("_main_module." + pathilize(_fsc.loaded_script) + "()._pre_start()")
                 _proc.setPM(_process_mode.FREE)
-            #except:
-            #    print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+            except:
+                print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
         elif (_cp.IsSearch(command) != False):
             _search = _cp.IsSearch(command)
             if (_search == "*"):  _search = "s"
