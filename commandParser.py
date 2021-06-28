@@ -1,9 +1,15 @@
+from fescripts.libs.PFable import fable
+
+
 class FE_COMMAND_PARSE:
     def isLoading(self,comm):
-        if (comm[0:14].casefold() == "load fescript ".casefold()):
-            return comm[14:len(comm)]
-        else:
-            return False
+        d = comm.split()
+        if (len(d) == 2 and d[0].casefold() == "load".casefold()):
+            if d[1][0:10] == "fescripts/":
+                return {"Type":"FESCRIPT","Name":d[1]}
+            else:
+                return False
+        return False
     def IsSet(self,comm):
         if (comm[0:4].casefold() == "set ".casefold()):
             return True

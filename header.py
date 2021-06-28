@@ -12,7 +12,7 @@ class FE_HEADER:
  //          //..\\
         ====UU====UU====
             '//||\\`
-              ''``""","Footer":"          Fat Eagle , a hacking framework by 0xDeviI"}]
+              ''``""","Footer":"          Fat Eagle , a cybersecurity framework by 0xDeviI"}]
     def printHeader(self):
         _ = random.randint(0,len(self.headers) - 1)
         print(self._cm.colorize_str(self.headers[_]["Header"] + "\n") +
