@@ -1,3 +1,4 @@
+from math import e, pi
 import os
 import sys
 import signal
@@ -12,12 +13,14 @@ from colorama import init
 init()
 from colorama import Fore,Back
 from processManager import _process_mode,FE_PROCESS_MANAGER
+from functions.functions import FUNCTIONS
 from fescripts.libs.PFable import fable_mode,fable
 from colorManager import *
 from feConfig import *
 
 _HEADER = header.FE_HEADER()
 _COLOR_M = FE_COLOR()
+_FUNCTIONS = FUNCTIONS()
 _cp = _command_parser.FE_COMMAND_PARSE()
 _fsc = fescriptManager.FE_SCRIPT_MANAGER()
 _proc = FE_PROCESS_MANAGER()
@@ -42,161 +45,174 @@ def main():
             command = input(Fore.RESET + "FatEagle ~> " if _fsc.loaded_script == "" else "FatEagle " + Fore.MAGENTA + "fescript" + Fore.RESET + "(" + Fore.YELLOW + _fsc.loaded_script + Fore.RESET + ") ~> ")
         except:
             goodBye()
-        if (command.casefold() == "myIP".casefold()):
-            print("Your IP adrress is :",Fore.LIGHTGREEN_EX + s.gethostbyname(s.gethostname()) + Fore.RESET)
-        elif (command.casefold() == "myHost".casefold()):
-            print("Your host name is :",Fore.LIGHTGREEN_EX + s.gethostname() + Fore.RESET)
-        elif (os.name == "nt" and command == "cls"):
-            clearConsole()
-        elif (os.name != "nt" and command == "clear"):
-            clearConsole()
-        elif (command.casefold() == "banner".casefold()):
-            _HEADER.printHeader()
-        elif (_cp.isLoading(command) != False):
-            f = _cp.isLoading(command)
-            if (f["Type"] == "FESCRIPT"):
-                _fsc.loadScript(f["Name"])
-        elif (command.casefold() == "unload module"):
-            if (_fsc.loaded_script != ""):  _fsc.unloadScript()
-        elif (command.casefold() == "fesInfo".casefold()):
-            if (_fsc.loaded_script != ""):
-                try:
-                    _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
-                    eval("_main_module." + pathilize(_fsc.loaded_script) + "().info()")
-                except:
-                    print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
-            else:
-                print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
-        elif (command.casefold() == "fesHelp".casefold()):
-            if (_fsc.loaded_script != ""):
-                try:
-                    _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
-                    eval("_main_module." + pathilize(_fsc.loaded_script) + "().help()")
-                except:
-                    print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
-            else:
-                print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
-        elif (command.casefold() == "fesOptions".casefold()):
-            if (_fsc.loaded_script != ""):
-                try:
-                    _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
-                    eval("_main_module." + pathilize(_fsc.loaded_script) + "().switchInfo()")
-                except:
-                    print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
-            else:
-                print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
-        elif (command.casefold() == "fesRequire".casefold()):
-            if (_fsc.loaded_script != ""):
-                try:
-                    _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
-                    eval("_main_module." + pathilize(_fsc.loaded_script) + "().missedSwitch()")
-                except:
-                    print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
-            else:
+        if (command != ""):
+            if (command.casefold() == "myIP".casefold()):
+                print("Your IP adrress is :",Fore.LIGHTGREEN_EX + s.gethostbyname(s.gethostname()) + Fore.RESET)
+            elif (command.casefold() == "myHost".casefold()):
+                print("Your host name is :",Fore.LIGHTGREEN_EX + s.gethostname() + Fore.RESET)
+            elif (os.name == "nt" and command == "cls"):
+                clearConsole()
+            elif (os.name != "nt" and command == "clear"):
+                clearConsole()
+            elif (command.casefold() == "banner".casefold()):
+                _HEADER.printHeader()
+            elif (_cp.isLoading(command) != False):
+                f = _cp.isLoading(command)
+                if (f["Type"] == "FESCRIPT"):
+                    _fsc.loadScript(f["Name"])
+            elif (command.casefold() == "unload module"):
+                if (_fsc.loaded_script != ""):  _fsc.unloadScript()
+            elif (command.casefold() == "fesInfo".casefold()):
+                if (_fsc.loaded_script != ""):
+                    try:
+                        _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
+                        eval("_main_module." + pathilize(_fsc.loaded_script) + "().info()")
+                    except:
+                        print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+                else:
                     print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
-        elif (_cp.IsSet(command) != False):
-            setValue(command)
-        elif (_cp.IsShow(command) != False):
-            showValue(_cp.IsShow(command))
-        elif (command.casefold() == "fesStart".casefold()):
-            try:
-                _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
-                _proc.setPM(_process_mode.IN_SCRIPT)
-                eval("_main_module." + pathilize(_fsc.loaded_script) + "()._pre_start()")
-                _proc.setPM(_process_mode.FREE)
-            except:
-                print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
-        elif (_cp.IsSearch(command) != False):
-            _search = _cp.IsSearch(command)
-            if (_search == "*"):  _search = "s"
-            _file = open("ModulesDB.json","r",encoding="utf8")
-            _modules = json.load(_file)
-            cols = ["name","description"]
-            data = []
-            for _ in _modules:
-                if (_search.casefold() in _["MODULE_FNAME"].casefold() or _search.casefold() in _["MODULE_INFO"].casefold()):
-                    data.append([_["MODULE_FNAME"],_["MODULE_INFO"]])
-            if (len(data) == 0):
-                print(Fore.LIGHTRED_EX + "can't find any fescript named '" + Fore.CYAN + _search + Fore.LIGHTRED_EX + "'.\nif you added new fescript, you may need to update modules database using:" + Fore.YELLOW + "\n        update db" + Fore.RESET)
-            else:
-                _fable = fable(cols,data,fable_mode.BOLD_COLUMNS)
-                print(_fable.popData())
-        elif (command.casefold() == "update db".casefold()):
-            updateModulesDB(True)
-        elif (command.casefold() == "exit".casefold()):
-            print(Fore.LIGHTBLUE_EX + "\nGoodbye!" + Fore.RESET)
-            sys.exit(0)
-        elif (_cp.IsAdd(command) != False):
-            arged = _cp.IsAdd(command)
-            __fes_dir = getListOfFiles("fescripts/")
-            for i in range(0,len(__fes_dir)):
-                __fes_dir[i] = __fes_dir[i].replace("fescripts/","")
-            _fescript = arged[1]
-            _list_name = arged[2]
-            __all_vars = globals().keys()
-            found = False
-            for i in __all_vars:
-                if (_list_name == i):
-                    found = True
-                    break
-            if (found):
+            elif (command.casefold() == "fesHelp".casefold()):
+                if (_fsc.loaded_script != ""):
+                    try:
+                        _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
+                        eval("_main_module." + pathilize(_fsc.loaded_script) + "().help()")
+                    except:
+                        print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+                else:
+                    print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
+            elif (command.casefold() == "fesOptions".casefold()):
+                if (_fsc.loaded_script != ""):
+                    try:
+                        _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
+                        eval("_main_module." + pathilize(_fsc.loaded_script) + "().switchInfo()")
+                    except:
+                        print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+                else:
+                    print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
+            elif (command.casefold() == "fesRequire".casefold()):
+                if (_fsc.loaded_script != ""):
+                    try:
+                        _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
+                        eval("_main_module." + pathilize(_fsc.loaded_script) + "().missedSwitch()")
+                    except:
+                        print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+                else:
+                        print(Fore.LIGHTRED_EX + "no module loaded." + Fore.RESET)
+            elif (_cp.IsSet(command) != False):
+                setValue(command)
+            elif (_cp.IsShow(command) != False):
+                showValue(_cp.IsShow(command))
+            elif (command.casefold() == "fesStart".casefold()):
+                try:
+                    _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
+                    _proc.setPM(_process_mode.IN_SCRIPT)
+                    eval("_main_module." + pathilize(_fsc.loaded_script) + "()._pre_start()")
+                    _proc.setPM(_process_mode.FREE)
+                except:
+                    print(Fore.LIGHTRED_EX + "fescript " + Fore.LIGHTBLUE_EX + pathilize(_fsc.loaded_script) + Fore.LIGHTRED_EX + " does not exist or may it has some errors" + Fore.RESET)
+            elif (_cp.IsSearch(command) != False):
+                _search = _cp.IsSearch(command)
+                if (_search == "*"):  _search = "s"
+                _file = open("ModulesDB.json","r",encoding="utf8")
+                _modules = json.load(_file)
+                cols = ["name","description"]
+                data = []
+                for _ in _modules:
+                    if (_search.casefold() in _["MODULE_FNAME"].casefold() or _search.casefold() in _["MODULE_INFO"].casefold() 
+                    or _search.casefold() in _["MODULE_DESC"].casefold()
+                    or _search.casefold() in _["MODULE_AUTHOR"].casefold()):
+                        data.append([_["MODULE_FNAME"],_["MODULE_INFO"]])
+                if (len(data) == 0):
+                    print(Fore.LIGHTRED_EX + "can't find any module named '" + Fore.CYAN + _search + Fore.LIGHTRED_EX + "'.\nif you added new fescript, you may need to update modules database using:" + Fore.YELLOW + "\n        update db" + Fore.RESET)
+                else:
+                    _fable = fable(cols,data,fable_mode.BOLD_COLUMNS)
+                    print(_fable.popData())
+            elif (command.casefold() == "update mdb".casefold()):
+                updateModulesDB(True)
+            elif (command.casefold() == "update fundb".casefold()):
+                _FUNCTIONS.updateFunctionDB(True)
+            elif (_cp.isFunSearch(command) != False):
+                _FUNCTIONS.searchFunc(_cp.isFunSearch(command))
+            elif (command.casefold() == "exit".casefold()):
+                print(Fore.LIGHTBLUE_EX + "\nGoodbye!" + Fore.RESET)
+                sys.exit(0)
+            elif (_cp.IsAdd(command) != False):
+                arged = _cp.IsAdd(command)
+                __fes_dir = getListOfFiles("fescripts/")
+                for i in range(0,len(__fes_dir)):
+                    __fes_dir[i] = __fes_dir[i].replace("fescripts/","")
+                _fescript = arged[1]
+                _list_name = arged[2]
+                __all_vars = globals().keys()
                 found = False
-                for i in __fes_dir:
-                    if (_fescript == i):
+                for i in __all_vars:
+                    if (_list_name == i):
                         found = True
                         break
                 if (found):
-                    if (_fescript not in eval(_list_name)):
-                        eval(_list_name + ".append(\"" + _fescript + "\")")
+                    found = False
+                    for i in __fes_dir:
+                        if (_fescript == i):
+                            found = True
+                            break
+                    if (found):
+                        if (_fescript not in eval(_list_name)):
+                            eval(_list_name + ".append(\"" + _fescript + "\")")
+                    else:
+                        print(Fore.LIGHTRED_EX + "fescript '" + Fore.LIGHTBLUE_EX + _fescript + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
                 else:
-                    print(Fore.LIGHTRED_EX + "fescript '" + Fore.LIGHTBLUE_EX + _fescript + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
+                    print(Fore.LIGHTRED_EX + "list '" + Fore.LIGHTBLUE_EX + _list_name + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
+                del __all_vars
+                del __fes_dir
+            elif (_cp.IsShowList(command) != False):
+                _list_name = _cp.IsShowList(command)
+                __all_vars = globals().keys()
+                found = False
+                for i in __all_vars:
+                    if (_list_name == i):
+                        found = True
+                        break
+                if (found):
+                    eval("print(" + str(_list_name) + ")")
+                else:
+                    print(Fore.LIGHTRED_EX + "list '" + Fore.LIGHTBLUE_EX + _list_name + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
+                del __all_vars
+            elif (command.casefold() == "deltemp".casefold()):
+                clearModuleTemp(True)
+            elif (command.casefold() == "info __FE_MULTI_FESCRIPT__".casefold()):
+                for i in __FE_MULTI_FESCRIPT__:
+                    print(i + " : ")
+                    _main_module = locals()[pathilize(i)] = __import__("fescripts." + i.replace("/","."),fromlist=['object'])
+                    _ = eval("_main_module." + pathilize(i) + "().switchInfo()")
+                    del _main_module
+            elif (command.casefold() == "start __FE_MULTI_FESCRIPT__".casefold()):
+                for i in __FE_MULTI_FESCRIPT__:
+                    print(i + " : ")
+                    _main_module = locals()[pathilize(i)] = __import__("fescripts." + i.replace("/","."),fromlist=['object'])
+                    _proc.setPM(_process_mode.IN_SCRIPT)
+                    _ = eval("_main_module." + pathilize(i) + "()._pre_start()")
+                    del _main_module
+                    _proc.setPM(_process_mode.FREE)
+            elif (_cp.IsMultiFesSet(command) != False):
+                arged = _cp.IsMultiFesSet(command)
+                _s_name = arged[1]
+                _s_val = arged[2]
+                _fes_name = arged[3]
+                _fsc.loadScript(_fes_name)
+                setValue("set " + _s_name + " " + _s_val)
+            elif (command.casefold() == "version".casefold()):
+                print(_COLOR_M.colorful_str("Fat Eagle V" + VERSION_))
+            elif (_cp.isFuncCall(command) != False):
+                funcCall = _cp.isFuncCall(command)
+                _FUNCTIONS.execute(funcCall[0],funcCall[1])
+            elif (_cp.isExec(command) != False):
+                _shell = _cp.isExec(command)
+                os.system(_shell)
+            elif (command.casefold() == "fwi".casefold()):
+                print(Fore.YELLOW + "Fat Eagle is a hacking and cybersecurity framework written in python by " + DEVELOPER + """ 
+    you can easily run it everywhere like windows,linux,mac,android and everywehere python can run. with this framework you can access to top security tools like exploits,payloads,hash crackers,phishing tools and e.t.c.""" + Fore.RESET)
             else:
-                print(Fore.LIGHTRED_EX + "list '" + Fore.LIGHTBLUE_EX + _list_name + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
-            del __all_vars
-            del __fes_dir
-        elif (_cp.IsShowList(command) != False):
-            _list_name = _cp.IsShowList(command)
-            __all_vars = globals().keys()
-            found = False
-            for i in __all_vars:
-                if (_list_name == i):
-                    found = True
-                    break
-            if (found):
-                eval("print(" + str(_list_name) + ")")
-            else:
-                print(Fore.LIGHTRED_EX + "list '" + Fore.LIGHTBLUE_EX + _list_name + Fore.LIGHTRED_EX + "' is Undefined!" + Fore.RESET)
-            del __all_vars
-        elif (command.casefold() == "deltemp".casefold()):
-            clearModuleTemp(True)
-        elif (command.casefold() == "info __FE_MULTI_FESCRIPT__".casefold()):
-            for i in __FE_MULTI_FESCRIPT__:
-                print(i + " : ")
-                _main_module = locals()[pathilize(i)] = __import__("fescripts." + i.replace("/","."),fromlist=['object'])
-                _ = eval("_main_module." + pathilize(i) + "().switchInfo()")
-                del _main_module
-        elif (command.casefold() == "start __FE_MULTI_FESCRIPT__".casefold()):
-            for i in __FE_MULTI_FESCRIPT__:
-                print(i + " : ")
-                _main_module = locals()[pathilize(i)] = __import__("fescripts." + i.replace("/","."),fromlist=['object'])
-                _proc.setPM(_process_mode.IN_SCRIPT)
-                _ = eval("_main_module." + pathilize(i) + "()._pre_start()")
-                del _main_module
-                _proc.setPM(_process_mode.FREE)
-        elif (_cp.IsMultiFesSet(command) != False):
-            arged = _cp.IsMultiFesSet(command)
-            _s_name = arged[1]
-            _s_val = arged[2]
-            _fes_name = arged[3]
-            _fsc.loadScript(_fes_name)
-            setValue("set " + _s_name + " " + _s_val)
-        elif (command.casefold() == "version".casefold()):
-            print(_COLOR_M.colorful_str("Fat Eagle V" + VERSION_))
-        elif (command.casefold() == "fwi".casefold()):
-            print(Fore.YELLOW + "Fat Eagle is a hacking and cybersecurity framework written in python by " + DEVELOPER + """ 
-you can easily run it everywhere like windows,linux,mac,android and everywehere python can run. with this framework you can access to top security tools like exploits,payloads,hash crackers,phishing tools and e.t.c.""" + Fore.RESET)
-        else:
-            print(Fore.LIGHTCYAN_EX + command + Fore.LIGHTRED_EX + " is not a valid command." + Fore.RESET)
+                print(Fore.LIGHTCYAN_EX + command + Fore.LIGHTRED_EX + " is not a valid command." + Fore.RESET)
 
 def showValue(switch):
     if (_fsc.loaded_script != ""):
@@ -268,7 +284,9 @@ def updateModulesDB(userRequest = False):
         if ('s' in _):
             _main_module = locals()[_] = __import__(_.replace("/","."),fromlist=['object'])
             info = eval("_main_module." + pathilize(_) + "()._info()")
-            data.append({"MODULE_FNAME":_,"MODULE_INFO":info.replace("\n", "")})
+            desc = eval("_main_module." + pathilize(_) + "()._help()")
+            author = eval("_main_module." + pathilize(_) + "()._author()")
+            data.append({"MODULE_FNAME":_,"MODULE_INFO":info.replace("\n", ""),"MODULE_DESC":desc,"MODULE_AUTHOR":author})
             del _main_module
     _file = open("ModulesDB.json","w",encoding="utf8")
     json.dump(data,_file,indent=4, sort_keys=True)
@@ -300,4 +318,5 @@ if (__name__ == "__main__"):
         sys.stdout.flush()
     if (MODULE_DB_UPDATE_ON_START): updateModulesDB()
     if (CLEAR_MODULE_TEMPS_ON_START):   clearModuleTemp()
+    _FUNCTIONS.updateFunctionDB()
     main()

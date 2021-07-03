@@ -1,0 +1,122 @@
+[
+    {
+        "FUNC_DESC": "generates a random password with specific length",
+        "FUNC_NAME": "randomPass",
+        "FUNC_USAGE": "call randomPass [CHARS] [LENGTH]"
+    },
+    {
+        "FUNC_DESC": "generates a random mac address",
+        "FUNC_NAME": "randomMacAddr",
+        "FUNC_USAGE": "call randomMacAddr"
+    },
+    {
+        "FUNC_DESC": "generates a random randomIPv4",
+        "FUNC_NAME": "randomIPv4",
+        "FUNC_USAGE": "call randomIPv4"
+    },
+    {
+        "FUNC_DESC": "generates a random randomIPv6",
+        "FUNC_NAME": "randomIPv6",
+        "FUNC_USAGE": "call randomIPv6"
+    },
+    {
+        "FUNC_DESC": "generates a ReverseHell FeScript Listener",
+        "FUNC_NAME": "generateRHL",
+        "FUNC_USAGE": "call generateRHL [IP] [PORT] [BUFFER_SIZE] [OS_TYPE] [PATH]"
+    },
+    {
+        "FUNC_DESC": "generates a md2 hash",
+        "FUNC_NAME": "md2",
+        "FUNC_USAGE": "call md2 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a md4 hash",
+        "FUNC_NAME": "md4",
+        "FUNC_USAGE": "call md4 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a md5 hash",
+        "FUNC_NAME": "md5",
+        "FUNC_USAGE": "call md5 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a sha1 hash",
+        "FUNC_NAME": "sha1",
+        "FUNC_USAGE": "call sha1 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a sha256 hash",
+        "FUNC_NAME": "sha256",
+        "FUNC_USAGE": "call sha256 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a sha384 hash",
+        "FUNC_NAME": "sha384",
+        "FUNC_USAGE": "call sha384 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a sha512 hash",
+        "FUNC_NAME": "sha512",
+        "FUNC_USAGE": "call sha512 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a ripemd128 hash",
+        "FUNC_NAME": "ripemd128",
+        "FUNC_USAGE": "call ripemd128 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a ripemd160 hash",
+        "FUNC_NAME": "ripemd160",
+        "FUNC_USAGE": "call ripemd160 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake224 hash",
+        "FUNC_NAME": "blake224",
+        "FUNC_USAGE": "call blake224 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake256 hash",
+        "FUNC_NAME": "blake256",
+        "FUNC_USAGE": "call blake256 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake384 hash",
+        "FUNC_NAME": "blake384",
+        "FUNC_USAGE": "call blake384 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake512 hash",
+        "FUNC_NAME": "blake512",
+        "FUNC_USAGE": "call blake512 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake2s224 hash",
+        "FUNC_NAME": "blake2s224",
+        "FUNC_USAGE": "call blake2s224 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake2s256 hash",
+        "FUNC_NAME": "blake2s256",
+        "FUNC_USAGE": "call blake2s256 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake2s384 hash",
+        "FUNC_NAME": "blake2s384",
+        "FUNC_USAGE": "call blake2s384 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a blake2s512 hash",
+        "FUNC_NAME": "blake2s512",
+        "FUNC_USAGE": "call blake2s512 [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a ntml hash",
+        "FUNC_NAME": "ntml",
+        "FUNC_USAGE": "call ntml [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a alpha hash",
+        "FUNC_NAME": "alpha",
+        "FUNC_USAGE": "call alpha [MESSAGE]"
+    }
+]

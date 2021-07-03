@@ -20,6 +20,14 @@ python3 -m pip install -r requirements.txt
 ```
 
 &nbsp;
+### New Features (Version 1.5 Alpha)
+new features added to version 1.5 Alpha
+- new FeScript (Reverse Hell)
+- functions
+- framework manual commands (update mdb, update fundb, exec, call, funsearch)
+- functions database
+
+&nbsp;
 ### How to use
 You can easily run framework by this command
 ```bash
@@ -32,17 +40,22 @@ python3 fEagle.py
 framework uses some manual commands.
 manual commmands are:
 - search [FeScript]:             search module
+- funsearch [Function]:          search a function
 - load [FeScript|Module]:      load module
 - unload module:    unload module
 - myIP:               show IP address of user
 - myHost:             show user host name
 - clear/cls:          clear screen(different in windows and others)
 - banner:             show random banner
-- update db:          update module database(require if new module added)
+- update mdb:          update module database(require if new module added)
+- update fundb:        update function database(require if new function added)
 - exit:               exit framework
 - deltemp:            delete module's temp files
 - version:            show framework version
 - fwi:                show info of framework
+- call [Function] [Args]        run a single function
+- exec [shell]        execute an os shell
+
 FeScripts uses some commands to config and run, FeScript commands are:
 - fesOptions:         show all available switch in module
 - fesRequire:         show all required switch in module
@@ -58,10 +71,9 @@ Also framework uses some commands to config and run FeScript lists, FeScript lis
 - start:              start custom list
 - mset [Property] [Value] [FeScript]:               set value to custom module in custom list
 
-
 &nbsp;
 ### Configuration
-You can easily config framework using file 'feConfig.py'. for example you can disable modules database update status in startup by this setting:
+You can easily config framework using file 'feConfig.py'. for example you can disable modules database update in startup by this setting:
 ```python
 MODULE_DB_UPDATE_ON_START = False
 ```

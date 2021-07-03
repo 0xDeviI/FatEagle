@@ -24,6 +24,12 @@ class Duzz_Port_Scanner:
     
     def help(self):
         print(self._fs._totalDesc)
+
+    def _help(self):
+      return self._fs._totalDesc
+
+    def _author(self):
+      return self._fs._author
     
     def info(self):
       print(self._fs._miniDesc + "\n    Author: " + self._fs._author)

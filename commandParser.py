@@ -21,8 +21,8 @@ class FE_COMMAND_PARSE:
             return d[1]
         return False
     def IsSearch(self,comm):
-        if (comm[0:7].casefold() == "search ".casefold()):
-            return comm[7:len(comm)]
+        if (len(comm.split()) == 2 and comm.split()[0].casefold() == "search".casefold()):
+            return comm.split()[1]
         else:
             return False
     def IsAdd(self,comm):
@@ -40,5 +40,30 @@ class FE_COMMAND_PARSE:
         arged = comm.split()
         if (arged[0].casefold() == "mset".casefold()):
             return arged
+        else:
+            return False
+    def isFuncCall(self,comm):
+        splited = comm.split()
+        if (splited[0].casefold() == "call".casefold() and len(splited) >= 2):
+            _funName = splited[1]
+            _args = []
+            for i in range(2,len(splited)):
+                _args.append(splited[i])
+            return [_funName,_args]
+        else:
+            return False
+    def isExec(self,comm):
+        splited = comm.split()
+        if (splited[0].casefold() == "exec".casefold() and len(splited) >= 2):
+            _shell = ""
+            for i in range(1,len(splited)):
+                _shell += splited[i] + " "
+            _shell = _shell[0:len(_shell) - 1]
+            return _shell
+        else:
+            return False
+    def isFunSearch(self,comm):
+        if (len(comm.split()) == 2 and comm.split()[0].casefold() == "funsearch".casefold()):
+            return comm.split()[1]
         else:
             return False
