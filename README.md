@@ -20,12 +20,10 @@ python3 -m pip install -r requirements.txt
 ```
 
 &nbsp;
-### New Features (Version 1.5 Alpha)
-new features added to version 1.5 Alpha
-- new FeScript (Reverse Hell)
-- functions
-- framework manual commands (update mdb, update fundb, exec, call, funsearch)
-- functions database
+### New Features (Version 1.6 Alpha)
+new features added to version 1.6 Alpha
+- new FeScript (Bind Hell, Qrawler)
+- more functions
 
 &nbsp;
 ### How to use

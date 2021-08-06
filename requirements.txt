@@ -1,8 +1,10 @@
-requests==2.25.1
-colorama==0.4.4
-Werkzeug==2.0.1
-Faker==8.9.0
-rarfile==4.0
-Flask==2.0.1
 tldextract==3.1.0
-pyinstaller
+gevent==20.9.0
+rarfile==4.0
+Werkzeug==1.0.1
+colorama==0.4.4
+requests==2.25.1
+lxml==4.6.3
+Faker==8.9.0
+Flask==1.1.2
+stem==1.8.0

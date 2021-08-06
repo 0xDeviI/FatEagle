@@ -118,5 +118,70 @@
         "FUNC_DESC": "generates a alpha hash",
         "FUNC_NAME": "alpha",
         "FUNC_USAGE": "call alpha [MESSAGE]"
+    },
+    {
+        "FUNC_DESC": "generates a BindHell FeScript Listener",
+        "FUNC_NAME": "generateBHL",
+        "FUNC_USAGE": "call generateBHL [IP] [PORT] [BUFFER_SIZE] [OS_TYPE] [PATH]"
+    },
+    {
+        "FUNC_DESC": "converts a binary number to hexadecimal number",
+        "FUNC_NAME": "binToHex",
+        "FUNC_USAGE": "call binToHex [BIN]"
+    },
+    {
+        "FUNC_DESC": "converts a binary number to decimal number",
+        "FUNC_NAME": "binToDec",
+        "FUNC_USAGE": "call binToDec [BIN]"
+    },
+    {
+        "FUNC_DESC": "converts a binary number to octal number",
+        "FUNC_NAME": "binToOct",
+        "FUNC_USAGE": "call binToOct [BIN]"
+    },
+    {
+        "FUNC_DESC": "converts a hexadecimal number to binary number",
+        "FUNC_NAME": "hexToBin",
+        "FUNC_USAGE": "call hexToBin [HEX]"
+    },
+    {
+        "FUNC_DESC": "converts a hexadecimal number to decimal number",
+        "FUNC_NAME": "hexToDec",
+        "FUNC_USAGE": "call hexToDec [HEX]"
+    },
+    {
+        "FUNC_DESC": "converts a hexadecimal number to octal number",
+        "FUNC_NAME": "hexToOct",
+        "FUNC_USAGE": "call hexToOct [HEX]"
+    },
+    {
+        "FUNC_DESC": "converts a decimal number to binary number",
+        "FUNC_NAME": "decToBin",
+        "FUNC_USAGE": "call decToBin [DEC]"
+    },
+    {
+        "FUNC_DESC": "converts a decimal number to hexadecimal number",
+        "FUNC_NAME": "decToHex",
+        "FUNC_USAGE": "call decToHex [DEC]"
+    },
+    {
+        "FUNC_DESC": "converts a decimal number to octal number",
+        "FUNC_NAME": "decToOct",
+        "FUNC_USAGE": "call decToOct [DEC]"
+    },
+    {
+        "FUNC_DESC": "converts a octal number to binary number",
+        "FUNC_NAME": "octToBin",
+        "FUNC_USAGE": "call octToBin [OCT]"
+    },
+    {
+        "FUNC_DESC": "converts a octal number to hexadecimal number",
+        "FUNC_NAME": "octToHex",
+        "FUNC_USAGE": "call octToHex [OCT]"
+    },
+    {
+        "FUNC_DESC": "converts a octal number to decimal number",
+        "FUNC_NAME": "octToDec",
+        "FUNC_USAGE": "call octToDec [OCT]"
     }
 ]

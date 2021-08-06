@@ -32,7 +32,36 @@ class FUNCTIONS:
     def randomIPv6(self):
         return Faker().ipv6()
 
-    def generateRHL(self,ip="0.0.0.0",port=6666,buffer_size=2e5,_os="windows",path=""):
+    def generateBHL(self,ip="0.0.0.0",port=6666,buffer_size=4096,_os="windows",path=""):
+        if (os.path.exists(path)):
+            _FILE = open("functions/_BindHell/bhcp.py","r")
+            _BHCPC = _FILE.read()
+            _FILE.close()
+            _FILE = open("functions/_BindHell/bh.py","w")
+            _FILE.write(_BHCPC)
+            _FILE.close()
+            _BHCPC = _BHCPC.replace("{IP}",'"' + ip + '"')
+            _BHCPC = _BHCPC.replace("{PORT}",str(port))
+            _BHCPC = _BHCPC.replace("{BUFFER_SZIE}",str(buffer_size))
+            _FILE = open("functions/_BindHell/bh.py","w")
+            _FILE.write(_BHCPC)
+            _FILE.close()
+            if (_os == "windows"):
+                os.system("pyinstaller --onefile -c -F functions/_BindHell/bh.py")
+                copyfile("dist/bh.exe",path + "/bh.exe")
+                shutil.rmtree("build/")
+                shutil.rmtree("dist/")
+                os.remove("bh.spec")
+            elif (_os == "linux"):
+                copyfile("functions/_BindHell/bh.py",path + "/bh.py")
+                os.system("chmod +x " + path + "/bh.py")
+            else:
+                print(Fore.RED + "bad os type selected!" + Fore.RESET)
+        else:
+            print(Fore.RED + "path not exist!" + Fore.RESET)
+        return ""
+
+    def generateRHL(self,ip="0.0.0.0",port=6666,buffer_size=4096,_os="windows",path=""):
         if (os.path.exists(path)):
             _FILE = open("functions/_ReverseHell/rhcp.py","r")
             _RHCPC = _FILE.read()
@@ -119,6 +148,42 @@ class FUNCTIONS:
         ah = AlphaHashV1()
         return ah.Hash(message)
 
+    def binToHex(self,_bin):
+        return hex(int(str(_bin), 2))
+
+    def binToDec(self,_bin):
+        return int(str(_bin), 2)
+
+    def binToOct(self,_bin):
+        return oct(int(str(_bin), 2))
+
+    def hexToBin(self,_hex):
+        return bin(int(str(_hex), 16))
+
+    def hexToDec(self,_hex):
+        return str(int(str(_hex), 16))
+
+    def hexToOct(self,_hex):
+        return oct(int(str(_hex), 16))
+
+    def decToBin(self,_dec):
+        return bin(int(_dec))
+
+    def decToHex(self,_dec):
+        return hex(int(_dec))
+
+    def decToOct(self,_dec):
+        return oct(int(_dec))
+
+    def octToBin(self,_oct):
+        return self.decToBin(self.octToDec(_oct))
+
+    def octToHex(self,_oct):
+        return self.decToHex(self.octToDec(_oct))
+
+    def octToDec(self,_oct):
+        return str(int(str(_oct), 8))
+
     def funHelp(self):
         funcs = {"randomPass":{"desc":"generates a random password with specific length","usage":"call randomPass [CHARS] [LENGTH]"},
         "randomPass":{"desc":"generates a random password with specific length","usage":"call randomPass [CHARS] [LENGTH]"},
@@ -144,9 +209,24 @@ class FUNCTIONS:
         "blake2s384":{"desc":"generates a blake2s384 hash","usage":"call blake2s384 [MESSAGE]"},
         "blake2s512":{"desc":"generates a blake2s512 hash","usage":"call blake2s512 [MESSAGE]"},
         "ntml":{"desc":"generates a ntml hash","usage":"call ntml [MESSAGE]"},
-        "alpha":{"desc":"generates a alpha hash","usage":"call alpha [MESSAGE]"}
+        "alpha":{"desc":"generates a alpha hash","usage":"call alpha [MESSAGE]"},
+        "generateBHL":{"desc":"generates a BindHell FeScript Listener","usage":"call generateBHL [IP] [PORT] [BUFFER_SIZE] [OS_TYPE] [PATH]"},
+        "binToHex":{"desc":"converts a binary number to hexadecimal number","usage":"call binToHex [BIN]"},
+        "binToDec":{"desc":"converts a binary number to decimal number","usage":"call binToDec [BIN]"},
+        "binToOct":{"desc":"converts a binary number to octal number","usage":"call binToOct [BIN]"},
+        "hexToBin":{"desc":"converts a hexadecimal number to binary number","usage":"call hexToBin [HEX]"},
+        "hexToDec":{"desc":"converts a hexadecimal number to decimal number","usage":"call hexToDec [HEX]"},
+        "hexToOct":{"desc":"converts a hexadecimal number to octal number","usage":"call hexToOct [HEX]"},
+        "decToBin":{"desc":"converts a decimal number to binary number","usage":"call decToBin [DEC]"},
+        "decToHex":{"desc":"converts a decimal number to hexadecimal number","usage":"call decToHex [DEC]"},
+        "decToOct":{"desc":"converts a decimal number to octal number","usage":"call decToOct [DEC]"},
+        "octToBin":{"desc":"converts a octal number to binary number","usage":"call octToBin [OCT]"},
+        "octToHex":{"desc":"converts a octal number to hexadecimal number","usage":"call octToHex [OCT]"},
+        "octToDec":{"desc":"converts a octal number to decimal number","usage":"call octToDec [OCT]"},
         }
         return funcs
+
+
 
     def searchFunc(self,_search):
         if (_search == "*"):  _search = "*"

