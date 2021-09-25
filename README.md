@@ -20,10 +20,10 @@ python3 -m pip install -r requirements.txt
 ```
 
 &nbsp;
-### New Features (Version 1.6 Alpha)
+### New Features (Version 1.7 Alpha)
 new features added to version 1.6 Alpha
-- new FeScript (Bind Hell, Qrawler)
-- more functions
+- new FeScript (IPRS, ShutSH, Fu*kTP)
+- bug fixes
 
 &nbsp;
 ### How to use
@@ -34,9 +34,9 @@ python3 fEagle.py
 *Note: if you just installed python3 on your machine, type 'python' instead python3 to run framework.*
 
 &nbsp;
-### Manual Commands
-framework uses some manual commands.
-manual commmands are:
+### Primary Commands
+framework uses some Primary commands.
+Primary commmands are:
 - search [FeScript]:             search module
 - funsearch [Function]:          search a function
 - load [FeScript|Module]:      load module

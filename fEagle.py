@@ -1,4 +1,3 @@
-from math import e, pi
 import os
 import sys
 import signal
@@ -244,8 +243,12 @@ def setValue(command):
         for i in props:
             if (other[0] == i):
                 _main_module = locals()[_fsc.loaded_script] = __import__(_fsc.loaded_script.replace("/","."),fromlist=['object'])
-                eval("_main_module." + pathilize(_fsc.loaded_script) + "().setSwitch(\"" + other[0] + "\",\"" + other[1] + "\")")
-                print(Fore.LIGHTBLUE_EX + other[0] + Fore.RESET + " ---> " + Fore.LIGHTGREEN_EX + other[1] + Fore.RESET)
+                oper = eval("_main_module." + pathilize(_fsc.loaded_script) + "().setSwitch(\"" + other[0] + "\",\"" + other[1] + "\")")
+                if (oper == None):
+                    print(Fore.LIGHTBLUE_EX + other[0] + Fore.RESET + " ---> " + Fore.LIGHTGREEN_EX + other[1] + Fore.RESET)
+                else:
+                    if (oper[0] == False):
+                        print(Fore.RED + oper[1] + Fore.RESET)
                 found = True
                 del _main_module
                 break

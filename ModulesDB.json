@@ -1,27 +1,15 @@
 [
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "generate a listener for target os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have bind shell access!",
-        "MODULE_FNAME": "fescripts/Network/BindHell",
-        "MODULE_INFO": "a FeScript to bind shell in windows and linux."
+        "MODULE_DESC": "a FeScript to scan web direcotry coded by 0xDeviI.\n to use this FeScript load it , set requirements and START",
+        "MODULE_FNAME": "fescripts/Web/Indexing/RetroDirScanner",
+        "MODULE_INFO": "a FeScript to scan web direcotry."
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "generate a listener for your os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have reverse shell access!",
-        "MODULE_FNAME": "fescripts/Network/ReverseHell",
-        "MODULE_INFO": "a FeScript to reverse shell in windows and linux."
-    },
-    {
-        "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "a multi threaded FeScript to find accounts of a username in most popular websites\nlike instagram , e.t.c. coded by 0xDeviI.to use this FeScript,\n load it , set requirements , and BOMB , start it :)",
-        "MODULE_FNAME": "fescripts/Osint/WhoIsWho",
-        "MODULE_INFO": "a multi threaded FeScript to find accounts of a username in websites"
-    },
-    {
-        "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "\n    a port scanner FeScript coded by 0xDeviI.\n    to use fescript load it and then set\n    requirement and BOBM , fesStart !!!",
-        "MODULE_FNAME": "fescripts/Web/PortScan/Duzz_Port_Scanner",
-        "MODULE_INFO": "a port scanner FeScript"
+        "MODULE_DESC": "this FeScript will starts a crawling process on any website and uses Tor Service to bypass server IP blocking",
+        "MODULE_FNAME": "fescripts/Web/Indexing/Qrawler",
+        "MODULE_INFO": "a FeScript that performs crawling process"
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
@@ -31,9 +19,9 @@
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "a FeScript to deploy a phishing attack to instagram users. support port forward and local attacks.",
-        "MODULE_FNAME": "fescripts/Web/Attack/Phishing/InstaFox",
-        "MODULE_INFO": "a FeScript to phishing attack to instagram pages."
+        "MODULE_DESC": "a FeScript to find websites robots.txt or sitemap.xml Coded By 0xDeviI.\nto use this FeScript load it , set requirements , and START !",
+        "MODULE_FNAME": "fescripts/Web/DataMining/RobotSitemapFinder",
+        "MODULE_INFO": "a FeScript to find websites robots.txt or sitemap.xml"
     },
     {
         "MODULE_AUTHOR": "RandsX\n    FeScript Convertor: 0xDeviI",
@@ -49,21 +37,9 @@
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "a FeScript to find websites robots.txt or sitemap.xml Coded By 0xDeviI.\nto use this FeScript load it , set requirements , and START !",
-        "MODULE_FNAME": "fescripts/Web/DataMining/RobotSitemapFinder",
-        "MODULE_INFO": "a FeScript to find websites robots.txt or sitemap.xml"
-    },
-    {
-        "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "a FeScript to scan web direcotry coded by 0xDeviI.\n to use this FeScript load it , set requirements and START",
-        "MODULE_FNAME": "fescripts/Web/Indexing/RetroDirScanner",
-        "MODULE_INFO": "a FeScript to scan web direcotry."
-    },
-    {
-        "MODULE_AUTHOR": "0xDeviI",
-        "MODULE_DESC": "this FeScript will starts a crawling process on any website and uses Tor Service to bypass server IP blocking",
-        "MODULE_FNAME": "fescripts/Web/Indexing/Qrawler",
-        "MODULE_INFO": "a FeScript that performs crawling process"
+        "MODULE_DESC": "a FeScript to deploy a phishing attack to instagram users. support port forward and local attacks.",
+        "MODULE_FNAME": "fescripts/Web/Attack/Phishing/InstaFox",
+        "MODULE_INFO": "a FeScript to phishing attack to instagram pages."
     },
     {
         "MODULE_AUTHOR": "0xDeviI",
@@ -82,5 +58,47 @@
         "MODULE_DESC": "ZilaCrack is a FeScript to find zip files password using bruteforce attack. you just need a password list to start attack using ZilaCrack.",
         "MODULE_FNAME": "fescripts/bruteforce/ZilaCrack",
         "MODULE_INFO": "breakdown zip files using bruteforce (crack zip files pass)"
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "a multi threaded FeScript to find accounts of a username in most popular websites\nlike instagram , e.t.c. coded by 0xDeviI.to use this FeScript,\n load it , set requirements , and BOMB , start it :)",
+        "MODULE_FNAME": "fescripts/Osint/WhoIsWho",
+        "MODULE_INFO": "a multi threaded FeScript to find accounts of a username in websites"
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "\n    a port scanner FeScript coded by 0xDeviI.\n    to use fescript load it and then set\n    requirement and BOBM , fesStart !!!",
+        "MODULE_FNAME": "fescripts/Network/PortScan/Duzz_Port_Scanner",
+        "MODULE_INFO": "a port scanner FeScript"
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "generate a listener for your os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have reverse shell access!",
+        "MODULE_FNAME": "fescripts/Network/ReverseHell",
+        "MODULE_INFO": "a FeScript to reverse shell in windows and linux."
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "a FeScript that brute forces FTP Services using givven userlist and passlist.",
+        "MODULE_FNAME": "fescripts/Network/ProtForce/FuckTP",
+        "MODULE_INFO": "FeScript that brute forces FTP."
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "a FeScript that brute forces SSH using givven wordlists.",
+        "MODULE_FNAME": "fescripts/Network/ProtForce/ShutSH",
+        "MODULE_INFO": "FeScript that brute forces SSH."
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "this FeScript will scan givven range of IP Addresses and shows up addresses.",
+        "MODULE_FNAME": "fescripts/Network/IPScan/IPRS",
+        "MODULE_INFO": "FeScript to scan range of ip address."
+    },
+    {
+        "MODULE_AUTHOR": "0xDeviI",
+        "MODULE_DESC": "generate a listener for target os (windows or linux), run that on target os, run fescript here and connect to target. BOOM! you have bind shell access!",
+        "MODULE_FNAME": "fescripts/Network/BindHell",
+        "MODULE_INFO": "a FeScript to bind shell in windows and linux."
     }
 ]
