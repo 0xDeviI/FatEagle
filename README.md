@@ -21,7 +21,7 @@ python3 -m pip install -r requirements.txt
 
 &nbsp;
 ### New Features (Version 1.7 Alpha)
-new features added to version 1.6 Alpha
+new features added to version 1.7 Alpha
 - new FeScript (IPRS, ShutSH, Fu*kTP)
 - bug fixes
 
