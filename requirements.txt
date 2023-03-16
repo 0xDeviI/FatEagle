@@ -1,6 +1,6 @@
 requests==2.25.1
 stem==1.8.0
-Werkzeug==2.0.1
+Werkzeug==2.2.3
 rarfile==4.0
 paramiko==2.7.2
 Flask==2.0.1
